@@ -25,8 +25,8 @@ function loadImages() {
 	var imageList = [
 		{varName: playerPic, theFile: "player2car.png"},
 
-		{trackType: TRACK_ROAD, theFile: "track_road.png"},
-		{trackType: TRACK_WALL, theFile: "track_wall.png"},
+		{trackType: TRACK_ROAD, theFile: "ground.png"},
+		{trackType: TRACK_WALL, theFile: "wall.png"},
 		{trackType: TRACK_GOAL, theFile: "track_goal.png"},
 		{trackType: TRACK_TREE, theFile: "track_tree.png"},
 		{trackType: TRACK_FLAG, theFile: "track_flag.png"}
