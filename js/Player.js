@@ -1,4 +1,3 @@
-const GROUNDSPEED_DECAY_MULT = 0.94;
 const DRIVE_POWER = 0.5;
 const REVERSE_POWER = 0.2;
 const TURN_RATE = 0.06;
@@ -52,8 +51,6 @@ function carClass() {
 	} // end of carReset func
 
 	this.move = function() {
-		this.speed *= GROUNDSPEED_DECAY_MULT;
-
 		if (this.keyHeld_Gas) {
 			this.speed += DRIVE_POWER;
 		}
