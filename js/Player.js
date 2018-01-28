@@ -1,5 +1,6 @@
 const DRIVE_POWER = 0.5;
 const REVERSE_POWER = 0.2;
+const TURN_RATE = 0.06;
 const MIN_SPEED_TO_TURN  = 0.5;
 
 function carClass() {
@@ -56,6 +57,15 @@ function carClass() {
 		if (this.keyHeld_Reverse) {
 			this.speed -= REVERSE_POWER;
 		}
+		if (Math.abs(this.speed) > MIN_SPEED_TO_TURN) { // Keeps user from being able to rotate in place
+			if (this.keyHeld_TurnLeft) {
+				this.ang -= TURN_RATE;
+		}
+			if (this.keyHeld_TurnRight) {
+				this.ang += TURN_RATE;
+			}
+		}
+
 
 		this.x += Math.cos(this.ang) * this.speed;
 		this.y += Math.sin(this.ang) * this.speed;
