@@ -27,15 +27,12 @@ function carClass() {
 	this.reset = function(whichImage, carName) {
 		this.name = carName;
 		this.myCarPic = whichImage;
-		this.speed = 0;
 
 		for (var eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
 			for(var eachCol=0; eachCol<TRACK_COLS;eachCol++) {
-
 				var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 				if (trackGrid[arrayIndex] == TRACK_PLAYERSTART) {
 					trackGrid[arrayIndex] = TRACK_ROAD;
-					this.ang = -Math.PI/2;
 					this.x = eachCol * TRACK_W + TRACK_W/2;
 					this.y = eachRow * TRACK_H + TRACK_H/2;
 					return;
@@ -46,21 +43,32 @@ function carClass() {
 	} // end of carReset func
 
 	this.move = function() {
+		var nextX = this.x;
+		var nextY = this.y;
+
 		if (this.keyHeld_Gas) {
-			this.y -= PLAYER_SPEED;
+			nextY -= PLAYER_SPEED;
 		}
 		if (this.keyHeld_Reverse) {
-			this.y += PLAYER_SPEED;
+			nextY += PLAYER_SPEED;
 		}
 		
 		if (this.keyHeld_TurnLeft) {
-			this.x -= PLAYER_SPEED;
+			nextX -= PLAYER_SPEED;
 		}
 		if (this.keyHeld_TurnRight) {
-			this.x += PLAYER_SPEED;
+			nextX += PLAYER_SPEED;
 		}
 
-		carTrackHandling(this);
+		var walkIntoTileIndex = getTileType(nextX, nextY);
+
+		if (walkIntoTileIndex == TRACK_GOAL) {
+			console.log(whichCar.name + " WINS");
+			loadLevel(levelOne);		
+		} else if (walkIntoTileIndex == TRACK_ROAD) {
+			this.x = nextX;
+			this.y = nextY;
+		}
 	}
 
 	this.draw = function() {

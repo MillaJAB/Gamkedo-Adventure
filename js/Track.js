@@ -39,9 +39,9 @@ function returnTileTypeAtColRow(col, row) {
 	}
 }
 
-function carTrackHandling(whichCar) {
-	var carTrackCol = Math.floor(whichCar.x / TRACK_W);
-	var carTrackRow = Math.floor(whichCar.y / TRACK_H);
+function getTileType(currentX, currentY) {
+	var carTrackCol = Math.floor(currentX / TRACK_W);
+	var carTrackRow = Math.floor(currentY / TRACK_H);
 	var trackIndexUnderCar = rowColToArrayIndex(carTrackCol, carTrackRow);
 	
 
@@ -49,18 +49,10 @@ function carTrackHandling(whichCar) {
 		carTrackRow >= 0 && carTrackRow < TRACK_ROWS) {
 		var tileHere = returnTileTypeAtColRow(carTrackCol, carTrackRow)
 		
-		if (tileHere == TRACK_GOAL) {
-			console.log(whichCar.name + " WINS");
-			loadLevel(levelOne);		
-		} else if (tileHere != TRACK_ROAD) {
-			// next two lines added to fix a bug, mentioned in video 9.6
-			// undoes the car movement which got it onto the wall
-			whichCar.x -= Math.cos(whichCar.ang) * whichCar.speed;
-			whichCar.y -= Math.sin(whichCar.ang) * whichCar.speed;
-
-			whichCar.speed *= -0.5;
-		}
+		return tileHere;
 	}
+
+	return TRACK_WALL;
 } // end of carTrackHandling();
 
 function rowColToArrayIndex(col, row) {
