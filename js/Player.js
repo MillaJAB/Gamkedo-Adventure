@@ -60,10 +60,6 @@ function carClass() {
 			this.x += PLAYER_SPEED;
 		}
 
-
-		this.x += Math.cos(this.ang) * this.speed;
-		this.y += Math.sin(this.ang) * this.speed;
-
 		carTrackHandling(this);
 	}
 
