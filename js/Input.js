@@ -40,12 +40,10 @@ function keySet(keyEvent, whichCar, setTo) {
 
 function keyPressed(evt) {
 	//console.log("Key pressed: " + evt.keyCode);
-	keySet(evt, blueCar, true);
 	keySet(evt, greenCar, true);
 }
 
 function keyReleased(evt) {
-	keySet(evt, blueCar, false);
 	keySet(evt, greenCar, false);
 	// console.log("Key released: " + evt.keyCode);
 }
