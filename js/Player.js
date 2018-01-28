@@ -1,11 +1,9 @@
-const PLAYER_SPEED = 0.2;
+const PLAYER_SPEED = 5;
 
 function carClass() {
 
 	this.x = 75;
 	this.y = 75;
-	this.ang = 0;
-	this.speed = 0;
 	this.myCarPic; // which picture to use
 	this.name = "Untitled Car";
 
@@ -49,17 +47,17 @@ function carClass() {
 
 	this.move = function() {
 		if (this.keyHeld_Gas) {
-			this.speed += PLAYER_SPEED;
+			this.y -= PLAYER_SPEED;
 		}
 		if (this.keyHeld_Reverse) {
-			this.speed -= PLAYER_SPEED;
+			this.y += PLAYER_SPEED;
 		}
 		
 		if (this.keyHeld_TurnLeft) {
-			this.ang -= PLAYER_SPEED;
+			this.x -= PLAYER_SPEED;
 		}
 		if (this.keyHeld_TurnRight) {
-			this.ang += PLAYER_SPEED;
+			this.x += PLAYER_SPEED;
 		}
 
 
