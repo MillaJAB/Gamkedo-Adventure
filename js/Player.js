@@ -1,7 +1,4 @@
-const DRIVE_POWER = 0.5;
-const REVERSE_POWER = 0.2;
-const TURN_RATE = 0.06;
-const MIN_SPEED_TO_TURN  = 0.5;
+const PLAYER_SPEED = 0.2;
 
 function carClass() {
 
@@ -52,18 +49,17 @@ function carClass() {
 
 	this.move = function() {
 		if (this.keyHeld_Gas) {
-			this.speed += DRIVE_POWER;
+			this.speed += PLAYER_SPEED;
 		}
 		if (this.keyHeld_Reverse) {
-			this.speed -= REVERSE_POWER;
+			this.speed -= PLAYER_SPEED;
 		}
-		if (Math.abs(this.speed) > MIN_SPEED_TO_TURN) { // Keeps user from being able to rotate in place
-			if (this.keyHeld_TurnLeft) {
-				this.ang -= TURN_RATE;
+		
+		if (this.keyHeld_TurnLeft) {
+			this.ang -= PLAYER_SPEED;
 		}
-			if (this.keyHeld_TurnRight) {
-				this.ang += TURN_RATE;
-			}
+		if (this.keyHeld_TurnRight) {
+			this.ang += PLAYER_SPEED;
 		}
 
 
