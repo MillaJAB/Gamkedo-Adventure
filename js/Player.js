@@ -63,7 +63,7 @@ function carClass() {
 		var walkIntoTileIndex = getTileType(nextX, nextY);
 
 		if (walkIntoTileIndex == TRACK_GOAL) {
-			console.log(whichCar.name + " WINS");
+			console.log(greenCar.name + " You WIN. Good jerb.");
 			loadLevel(levelOne);		
 		} else if (walkIntoTileIndex == TRACK_ROAD) {
 			this.x = nextX;

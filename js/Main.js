@@ -22,7 +22,7 @@ function imageLoadingDoneSoStartGame() {
 
 function loadLevel(whichLevel) {
 	trackGrid = whichLevel.slice(); // Copies levelOne grid to the empty track grid
-	greenCar.reset(playerPic, "Green Machine");
+	greenCar.reset(playerPic, "Sabot Keenblade");
 }
 
 function updateAll() {
