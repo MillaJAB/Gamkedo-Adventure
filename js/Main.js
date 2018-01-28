@@ -1,6 +1,4 @@
 var canvas, canvasContext;
-
-var blueCar = new carClass();
 var greenCar = new carClass();
 
 window.onload = function() {
@@ -25,7 +23,6 @@ function imageLoadingDoneSoStartGame() {
 function loadLevel(whichLevel) {
 	trackGrid = whichLevel.slice(); // Copies levelOne grid to the empty track grid
 	greenCar.reset(otherCarPic, "Green Machine");
-	blueCar.reset(carPic, "Blue Steel");
 }
 
 function updateAll() {
@@ -35,11 +32,9 @@ function updateAll() {
 
 function moveAll() {
 	greenCar.move();
-	blueCar.move();
 }
 	
 function drawAll() {
 	drawTracks();
 	greenCar.draw();
-	blueCar.draw();
 }
