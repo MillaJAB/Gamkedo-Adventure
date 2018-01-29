@@ -21,7 +21,7 @@ function imageLoadingDoneSoStartGame() {
 }
 
 function loadLevel(whichLevel) {
-	trackGrid = whichLevel.slice(); // Copies levelOne grid to the empty track grid
+	worldGrid = whichLevel.slice(); // Copies levelOne grid to the empty world grid
 	greenCar.reset(playerPic, "Sabot Keenblade");
 }
 
@@ -35,6 +35,6 @@ function moveAll() {
 }
 	
 function drawAll() {
-	drawTracks();
+	drawWorlds();
 	greenCar.draw();
 }

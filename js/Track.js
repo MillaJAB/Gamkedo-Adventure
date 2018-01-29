@@ -1,8 +1,8 @@
-const TRACK_W = 50;
-const TRACK_H = 50;
-const TRACK_COLS = 16;
-const TRACK_ROWS = 12;
-const TRACK_GAP = 2;
+const WORLD_W = 50;
+const WORLD_H = 50;
+const WORLD_COLS = 16;
+const WORLD_ROWS = 12;
+const WORLD_GAP = 2;
 var levelOne = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 				 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 4, 0, 1, 1, 1, 1,
 				 1, 0, 3, 0, 3, 0, 1, 0, 0, 0, 1, 0, 1, 3, 3, 1,
@@ -17,7 +17,7 @@ var levelOne = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 				 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 				 // 0 = ground, 1 = wall, 2 = starting spot, 3 = keys, 4 = doors, 5 = goal
 
-var trackGrid = [];
+var worldGrid = [];
 
 const GROUND = 0;
 const WALL = 1;
@@ -27,50 +27,50 @@ const DOOR = 4;
 const CHALICE = 5;
 
 function returnTileTypeAtColRow(col, row) {
-	if (col >= 0 && col < TRACK_COLS && 
-		row >= 0 && row < TRACK_ROWS) {
-		var trackIndexUnderCoord = rowColToArrayIndex(col, row);
-		return trackGrid[trackIndexUnderCoord];
+	if (col >= 0 && col < WORLD_COLS && 
+		row >= 0 && row < WORLD_ROWS) {
+		var worldIndexUnderCoord = rowColToArrayIndex(col, row);
+		return worldGrid[worldIndexUnderCoord];
 	} else {
-		return TRACK_WALL;
+		return WORLD_WALL;
 	}
 }
 
 function getTileType(currentX, currentY) {
-	var carTrackCol = Math.floor(currentX / TRACK_W);
-	var carTrackRow = Math.floor(currentY / TRACK_H);
-	var trackIndexUnderCar = rowColToArrayIndex(carTrackCol, carTrackRow);
+	var carWorldCol = Math.floor(currentX / WORLD_W);
+	var carWorldRow = Math.floor(currentY / WORLD_H);
+	var worldIndexUnderCar = rowColToArrayIndex(carWorldCol, carWorldRow);
 	
 
-	if (carTrackCol >= 0 && carTrackCol < TRACK_COLS && 
-		carTrackRow >= 0 && carTrackRow < TRACK_ROWS) {
-		var tileHere = returnTileTypeAtColRow(carTrackCol, carTrackRow)
+	if (carWorldCol >= 0 && carWorldCol < WORLD_COLS && 
+		carWorldRow >= 0 && carWorldRow < WORLD_ROWS) {
+		var tileHere = returnTileTypeAtColRow(carWorldCol, carWorldRow)
 		
 		return tileHere;
 	}
 
-	return TRACK_WALL;
-} // end of carTrackHandling();
+	return WORLD_WALL;
+} // end of carWorldHandling();
 
 function rowColToArrayIndex(col, row) {
-	return col + TRACK_COLS * row;
+	return col + WORLD_COLS * row;
 }
 
-function drawTracks() {
+function drawWorlds() {
 
 	var arrayIndex = 0;
 	var drawTileX = 0;
 	var drawTileY = 0;
-	for (var eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
-		for(var eachCol=0;eachCol<TRACK_COLS;eachCol++) {
-			var tileKindHere = trackGrid[arrayIndex];
-			var useImg = trackPics[tileKindHere];
+	for (var eachRow = 0; eachRow < WORLD_ROWS; eachRow++) {
+		for(var eachCol=0;eachCol<WORLD_COLS;eachCol++) {
+			var tileKindHere = worldGrid[arrayIndex];
+			var useImg = worldPics[tileKindHere];
 			canvasContext.drawImage(useImg, drawTileX,drawTileY);
 
-			drawTileX += TRACK_W;
+			drawTileX += WORLD_W;
 			arrayIndex++;
 		} // Goes through each column
 		drawTileX = 0;
-		drawTileY += TRACK_H;
+		drawTileY += WORLD_H;
 	} // Above bits are incremented when you exit the last column and start a new row
-} // end of drawTracks func
+} // end of drawWorlds func
