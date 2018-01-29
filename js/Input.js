@@ -12,7 +12,7 @@ function setupInput() {
 	document.addEventListener('keydown', keyPressed);
 	document.addEventListener('keyup', keyReleased);
 
-	greenCar.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW);
+	greenPlayer.setupInput(KEY_UP_ARROW, KEY_RIGHT_ARROW, KEY_DOWN_ARROW, KEY_LEFT_ARROW);
 }
 
 function updateMousePos(evt) {
@@ -23,27 +23,27 @@ function updateMousePos(evt) {
 	mouseY = evt.clientY - rect.top - root.scrollTop;
 }
 
-function keySet(keyEvent, whichCar, setTo) {
-	if (keyEvent.keyCode == whichCar.controlKeyLeft) {
-		whichCar.keyHeld_TurnLeft = setTo;
+function keySet(keyEvent, whichPlayer, setTo) {
+	if (keyEvent.keyCode == whichPlayer.controlKeyLeft) {
+		whichPlayer.keyHeld_TurnLeft = setTo;
 	}
-	if (keyEvent.keyCode == whichCar.controlKeyRight) {
-		whichCar.keyHeld_TurnRight = setTo;
+	if (keyEvent.keyCode == whichPlayer.controlKeyRight) {
+		whichPlayer.keyHeld_TurnRight = setTo;
 	}
-	if (keyEvent.keyCode == whichCar.controlKeyUp) {
-		whichCar.keyHeld_Gas = setTo;
+	if (keyEvent.keyCode == whichPlayer.controlKeyUp) {
+		whichPlayer.keyHeld_Gas = setTo;
 	}
-	if (keyEvent.keyCode == whichCar.controlKeyDown) {
-		whichCar.keyHeld_Reverse = setTo;
+	if (keyEvent.keyCode == whichPlayer.controlKeyDown) {
+		whichPlayer.keyHeld_Reverse = setTo;
 	}
 }
 
 function keyPressed(evt) {
 	//console.log("Key pressed: " + evt.keyCode);
-	keySet(evt, greenCar, true);
+	keySet(evt, greenPlayer, true);
 }
 
 function keyReleased(evt) {
-	keySet(evt, greenCar, false);
+	keySet(evt, greenPlayer, false);
 	// console.log("Key released: " + evt.keyCode);
 }

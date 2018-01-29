@@ -37,20 +37,20 @@ function returnTileTypeAtColRow(col, row) {
 }
 
 function getTileType(currentX, currentY) {
-	var carWorldCol = Math.floor(currentX / WORLD_W);
-	var carWorldRow = Math.floor(currentY / WORLD_H);
-	var worldIndexUnderCar = rowColToArrayIndex(carWorldCol, carWorldRow);
+	var playerWorldCol = Math.floor(currentX / WORLD_W);
+	var playerWorldRow = Math.floor(currentY / WORLD_H);
+	var worldIndexUnderPlayer = rowColToArrayIndex(playerWorldCol, playerWorldRow);
 	
 
-	if (carWorldCol >= 0 && carWorldCol < WORLD_COLS && 
-		carWorldRow >= 0 && carWorldRow < WORLD_ROWS) {
-		var tileHere = returnTileTypeAtColRow(carWorldCol, carWorldRow)
+	if (playerWorldCol >= 0 && playerWorldCol < WORLD_COLS && 
+		playerWorldRow >= 0 && playerWorldRow < WORLD_ROWS) {
+		var tileHere = returnTileTypeAtColRow(playerWorldCol, playerWorldRow)
 		
 		return tileHere;
 	}
 
 	return WORLD_WALL;
-} // end of carWorldHandling();
+} // end of playerWorldHandling();
 
 function rowColToArrayIndex(col, row) {
 	return col + WORLD_COLS * row;

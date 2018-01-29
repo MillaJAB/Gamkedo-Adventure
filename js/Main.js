@@ -1,5 +1,5 @@
 var canvas, canvasContext;
-var greenCar = new carClass();
+var greenPlayer = new playerClass();
 
 window.onload = function() {
 	canvas = document.getElementById('gameCanvas');
@@ -22,7 +22,7 @@ function imageLoadingDoneSoStartGame() {
 
 function loadLevel(whichLevel) {
 	worldGrid = whichLevel.slice(); // Copies levelOne grid to the empty world grid
-	greenCar.reset(playerPic, "Sabot Keenblade");
+	greenPlayer.reset(playerPic, "Sabot Keenblade");
 }
 
 function updateAll() {
@@ -31,10 +31,10 @@ function updateAll() {
 }
 
 function moveAll() {
-	greenCar.move();
+	greenPlayer.move();
 }
 	
 function drawAll() {
 	drawWorlds();
-	greenCar.draw();
+	greenPlayer.draw();
 }
