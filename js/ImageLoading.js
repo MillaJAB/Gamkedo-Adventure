@@ -27,9 +27,9 @@ function loadImages() {
 
 		{trackType: TRACK_ROAD, theFile: "ground.png"},
 		{trackType: TRACK_WALL, theFile: "wall.png"},
-		{trackType: TRACK_GOAL, theFile: "track_goal.png"},
-		{trackType: TRACK_TREE, theFile: "track_tree.png"},
-		{trackType: TRACK_FLAG, theFile: "track_flag.png"}
+		{trackType: TRACK_GOAL, theFile: "key.png"},
+		{trackType: TRACK_TREE, theFile: "door.png"},
+		{trackType: TRACK_FLAG, theFile: "chalice.png"}
 	];
 
 	picsToLoad = imageList.length;
