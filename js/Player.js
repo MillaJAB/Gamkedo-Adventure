@@ -28,13 +28,13 @@ function playerClass() {
 		this.name = playerName;
 		this.myPlayerPic = whichImage;
 
-		for (var eachRow = 0; eachRow < WORLD_ROWS; eachRow++) {
-			for(var eachCol=0; eachCol<WORLD_COLS;eachCol++) {
+		for (var eachRow = 0; eachRow < TILE_ROWS; eachRow++) {
+			for(var eachCol=0; eachCol<TILE_COLS;eachCol++) {
 				var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 				if (worldGrid[arrayIndex] == PLAYERSTART) {
 					worldGrid[arrayIndex] = GROUND;
-					this.x = eachCol * WORLD_W + WORLD_W/2;
-					this.y = eachRow * WORLD_H + WORLD_H/2;
+					this.x = eachCol * TILE_W + TILE_W/2;
+					this.y = eachRow * TILE_H + TILE_H/2;
 					return;
 				} // end of player start if
 			} // end of col for
