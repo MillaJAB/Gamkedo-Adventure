@@ -31,8 +31,8 @@ function carClass() {
 		for (var eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
 			for(var eachCol=0; eachCol<TRACK_COLS;eachCol++) {
 				var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
-				if (trackGrid[arrayIndex] == TRACK_PLAYERSTART) {
-					trackGrid[arrayIndex] = TRACK_ROAD;
+				if (trackGrid[arrayIndex] == PLAYERSTART) {
+					trackGrid[arrayIndex] = GROUND;
 					this.x = eachCol * TRACK_W + TRACK_W/2;
 					this.y = eachRow * TRACK_H + TRACK_H/2;
 					return;
@@ -62,10 +62,10 @@ function carClass() {
 
 		var walkIntoTileIndex = getTileType(nextX, nextY);
 
-		if (walkIntoTileIndex == TRACK_GOAL) {
+		if (walkIntoTileIndex == CHALICE) {
 			console.log(greenCar.name + " You WIN. Good jerb.");
 			loadLevel(levelOne);		
-		} else if (walkIntoTileIndex == TRACK_ROAD) {
+		} else if (walkIntoTileIndex == GROUND) {
 			this.x = nextX;
 			this.y = nextY;
 		}

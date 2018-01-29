@@ -1,5 +1,6 @@
 var playerPic = document.createElement("img");
 var trackPics = [];
+var imagesWithTransparency = [3, 4, 5];
 
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
 
@@ -24,12 +25,11 @@ function loadImageForTrackCode(trackCode, fileName) {
 function loadImages() {
 	var imageList = [
 		{varName: playerPic, theFile: "player2car.png"},
-
-		{trackType: TRACK_ROAD, theFile: "ground.png"},
-		{trackType: TRACK_WALL, theFile: "wall.png"},
-		{trackType: TRACK_GOAL, theFile: "key.png"},
-		{trackType: TRACK_TREE, theFile: "door.png"},
-		{trackType: TRACK_FLAG, theFile: "chalice.png"}
+		{trackType: GROUND, theFile: "ground.png"},
+		{trackType: WALL, theFile: "wall.png"},
+		{trackType: KEY, theFile: "key.png"},
+		{trackType: DOOR, theFile: "door.png"},
+		{trackType: CHALICE, theFile: "chalice.png"}
 	];
 
 	picsToLoad = imageList.length;

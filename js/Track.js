@@ -19,12 +19,12 @@ var levelOne = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 
 var trackGrid = [];
 
-const TRACK_ROAD = 0;
-const TRACK_WALL = 1;
-const TRACK_PLAYERSTART = 2;
-const TRACK_GOAL = 3;
-const TRACK_TREE = 4;
-const TRACK_FLAG = 5;
+const GROUND = 0;
+const WALL = 1;
+const PLAYERSTART = 2;
+const KEY = 3;
+const DOOR = 4;
+const CHALICE = 5;
 
 function returnTileTypeAtColRow(col, row) {
 	if (col >= 0 && col < TRACK_COLS && 
