@@ -1,6 +1,5 @@
 var playerPic = document.createElement("img");
 var worldPics = [];
-var imagesWithTransparency = [3, 4, 5];
 
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
 

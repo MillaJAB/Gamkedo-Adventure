@@ -1,4 +1,5 @@
 const PLAYER_SPEED = 5;
+var keysOwned = 0;
 
 function playerClass() {
 
@@ -65,10 +66,13 @@ function playerClass() {
 		if (walkIntoTileIndex == CHALICE) {
 			console.log(greenPlayer.name + " You WIN. Good jerb.");
 			loadLevel(levelOne);		
-		} else if (walkIntoTileIndex == GROUND  ) {
+		} else if (walkIntoTileIndex == KEY) {
+			keysOwned++;
+			console.log(keysOwned);
+		} else if (walkIntoTileIndex == GROUND  ) { // Only moves if there's ground ahead
 			this.x = nextX;
 			this.y = nextY;
-		}
+		} 
 	}
 
 	this.draw = function() {

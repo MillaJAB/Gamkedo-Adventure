@@ -8,7 +8,7 @@ var levelOne = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 				 1, 0, 3, 0, 3, 0, 1, 0, 0, 0, 1, 0, 1, 3, 3, 1,
 				 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 4, 1, 1,
 				 1, 1, 1, 4, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1,
-				 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 3, 0, 1, 1,
+				 1, 2, 0, 0, 0, 0, 0, 0, 3, 0, 1, 0, 3, 0, 1, 1,
 				 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1,
 				 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 3, 0, 1, 1,
 				 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1,
@@ -25,6 +25,12 @@ const PLAYERSTART = 2;
 const KEY = 3;
 const DOOR = 4;
 const CHALICE = 5;
+
+function tileWithTransparency(checkTileType) {
+	return (checkTileType == KEY ||
+			checkTileType == DOOR ||
+			checkTileType == CHALICE);
+}
 
 function returnTileTypeAtColRow(col, row) {
 	if (col >= 0 && col < TILE_COLS && 
@@ -65,6 +71,9 @@ function drawWorlds() {
 		for(var eachCol=0;eachCol<TILE_COLS;eachCol++) {
 			var tileKindHere = worldGrid[arrayIndex];
 			var useImg = worldPics[tileKindHere];
+			if (tileWithTransparency(tileKindHere)) {
+				canvasContext.drawImage(worldPics[GROUND], drawTileX, drawTileY);
+			}
 			canvasContext.drawImage(useImg, drawTileX,drawTileY);
 
 			drawTileX += TILE_W;
