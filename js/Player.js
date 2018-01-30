@@ -73,8 +73,7 @@ function playerClass() {
 			keysOwned++;
 			worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY)] = GROUND;
 			drawWorlds();
-			//canvasContext.drawImage(worldPics[GROUND], 400,250);
-			//console.log(this.y);
+			console.log(keysOwned);
 		} else if (walkIntoTileIndex == DOOR) {
 			if (keysOwned > 0) {
 				keysOwned--;
@@ -90,16 +89,20 @@ function playerClass() {
 function giveIndexForObstacle(currentX, currentY, nextX, nextY) {
 	var col;
 	var row;
-	if (nextX > currentX) {
+	if (nextX > currentX) { // moving right
 		col = Math.floor((currentX + TILE_W/2) / TILE_W);
 		row = Math.floor(currentY / TILE_H);
-	} else if (nextX < currentX) {
-		console.log("You're going left");
-	} else if (nextY < currentY) {
-		console.log("You're going up");
-	} else {
-		console.log("You're going down");
+	} else if (nextX < currentX) { // moving left
+		col = Math.floor((currentX - TILE_W/2) / TILE_W);
+		row = Math.floor(currentY / TILE_H);
+	} else if (nextY < currentY) { // moving up
+		col = Math.floor(currentX / TILE_W);
+		row = Math.floor((currentY - TILE_H) / TILE_H);
+	} else { // moving down
+		col = Math.floor(currentX / TILE_W);
+		row = Math.floor((currentY + TILE_H/2) / TILE_H);
 	} 
+	console.log(col + " and " + row);
 	return (row * TILE_COLS + col);
 }
 //FUCK, I THINK I NEED TO CHECK ON ALL SIDES OF THE CHARACTER
