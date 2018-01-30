@@ -70,13 +70,15 @@ function playerClass() {
 			this.x = nextX;
 			this.y = nextY;	
 		} else if (walkIntoTileIndex == KEY) {
-			keysOwned++;
 			worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY)] = GROUND;
 			drawWorlds();
-			console.log(keysOwned);
+			keysOwned++;
+			console.log("You have " + keysOwned);
 		} else if (walkIntoTileIndex == DOOR) {
 			if (keysOwned > 0) {
+				worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY)] = GROUND;
 				keysOwned--;
+				console.log("You have " + keysOwned);
 			}
 		}
 	}
@@ -102,7 +104,7 @@ function giveIndexForObstacle(currentX, currentY, nextX, nextY) {
 		col = Math.floor(currentX / TILE_W);
 		row = Math.floor((currentY + TILE_H/2) / TILE_H);
 	} 
-	console.log(col + " and " + row);
 	return (row * TILE_COLS + col);
 }
-//FUCK, I THINK I NEED TO CHECK ON ALL SIDES OF THE CHARACTER
+
+// BUG: When going diagonal, multiple keys get picked up
