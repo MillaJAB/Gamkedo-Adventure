@@ -23,7 +23,7 @@ function loadImageForWorldCode(worldCode, fileName) {
 
 function loadImages() {
 	var imageList = [
-		{varName: playerPic, theFile: "player2car.png"},
+		{varName: playerPic, theFile: "playerCharacter.png"},
 		{worldType: GROUND, theFile: "ground.png"},
 		{worldType: WALL, theFile: "wall.png"},
 		{worldType: KEY, theFile: "key.png"},
