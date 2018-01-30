@@ -108,3 +108,5 @@ function giveIndexForObstacle(currentX, currentY, nextX, nextY) {
 }
 
 // BUG: When going diagonal, multiple keys get picked up
+// BUG: A wall got removed at one point instead of the door
+// BUG: Need to reset number of keys owned to zero on reset
