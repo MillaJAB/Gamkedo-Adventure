@@ -65,17 +65,41 @@ function playerClass() {
 
 		if (walkIntoTileIndex == CHALICE) {
 			console.log(greenPlayer.name + " You WIN. Good jerb.");
-			loadLevel(levelOne);		
-		} else if (walkIntoTileIndex == KEY) {
-			keysOwned++;
-			console.log(keysOwned);
+			loadLevel(levelOne);	
 		} else if (walkIntoTileIndex == GROUND  ) { // Only moves if there's ground ahead
 			this.x = nextX;
-			this.y = nextY;
-		} 
+			this.y = nextY;	
+		} else if (walkIntoTileIndex == KEY) {
+			keysOwned++;
+			worldGrid[giveIndexForObstacle(this.x, this.y, nextX, nextY)] = GROUND;
+			drawWorlds();
+			//canvasContext.drawImage(worldPics[GROUND], 400,250);
+			//console.log(this.y);
+		} else if (walkIntoTileIndex == DOOR) {
+			if (keysOwned > 0) {
+				keysOwned--;
+			}
+		}
 	}
 
 	this.draw = function() {
 		drawBitmapCenteredWithRotation(this.myPlayerPic, this.x, this.y, this.ang);
 	}
 }
+
+function giveIndexForObstacle(currentX, currentY, nextX, nextY) {
+	var col;
+	var row;
+	if (nextX > currentX) {
+		col = Math.floor((currentX + TILE_W/2) / TILE_W);
+		row = Math.floor(currentY / TILE_H);
+	} else if (nextX < currentX) {
+		console.log("You're going left");
+	} else if (nextY < currentY) {
+		console.log("You're going up");
+	} else {
+		console.log("You're going down");
+	} 
+	return (row * TILE_COLS + col);
+}
+//FUCK, I THINK I NEED TO CHECK ON ALL SIDES OF THE CHARACTER
